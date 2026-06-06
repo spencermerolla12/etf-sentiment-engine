@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from datetime import date
+from datetime import date, datetime, timedelta
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -213,6 +213,10 @@ def main() -> None:
 
     min_date = ticker_dataframe["date"].min().date()
     max_date = ticker_dataframe["date"].max().date()
+    today = datetime.today().date()
+    default_start_date = today - timedelta(days=90)
+    date_input_min = min(min_date, default_start_date)
+    date_input_max = max(max_date, today)
     latest_row = ticker_dataframe.sort_values("date").iloc[-1]
     trading_days = ticker_dataframe["date"].dt.date.nunique()
 
@@ -222,20 +226,20 @@ def main() -> None:
     with start_column:
         selected_start = st.date_input(
             "Start date",
-            value=min_date,
-            min_value=min_date,
-            max_value=max_date,
+            value=default_start_date,
+            min_value=date_input_min,
+            max_value=date_input_max,
             format="YYYY-MM-DD",
-            disabled=min_date == max_date,
+            disabled=False,
         )
     with end_column:
         selected_end = st.date_input(
             "End date",
-            value=max_date,
-            min_value=min_date,
-            max_value=max_date,
+            value=today,
+            min_value=date_input_min,
+            max_value=date_input_max,
             format="YYYY-MM-DD",
-            disabled=min_date == max_date,
+            disabled=False,
         )
 
     if selected_start > selected_end:
