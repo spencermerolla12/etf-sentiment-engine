@@ -1,0 +1,9 @@
+feedparser
+pandas
+plotly
+psycopg2-binary
+python-dotenv
+streamlit
+torch
+transformers
+yfinance
