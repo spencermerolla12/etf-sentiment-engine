@@ -1,6 +1,6 @@
 # Macro Markets Sentiment Analytics Engine
 
-**[Live Dashboard]**(https://spencer-market-sentiment.streamlit.app/)
+**[Live Dashboard]**(https://etf-sentiment-spencer.streamlit.app/)
 
 An automated, cloud-native NLP data pipeline and macroeconomic dashboard tracking the divergence between equity prices and aggregated media sentiment forecasts. 
 
