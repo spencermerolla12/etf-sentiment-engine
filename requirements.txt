@@ -4,6 +4,7 @@ plotly
 psycopg2-binary
 python-dotenv
 streamlit
+statsmodels
 torch
 transformers
 yfinance
